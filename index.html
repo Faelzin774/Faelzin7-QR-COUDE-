@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAELZIN7 👑 - Gerador de QR Code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #0ff;
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #qrcode {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FAELZIN7 👑</h1>
+  <p>Digite um texto ou link abaixo e clique em "Gerar QR Code"</p>
+  <input type="text" id="text" placeholder="Digite algo aqui..." />
+  <br />
+  <button onclick="generateQRCode()">Gerar QR Code</button>
+  <div id="qrcode"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    let qrcode;
+    function generateQRCode() {
+      const text = document.getElementById("text").value;
+      const qrContainer = document.getElementById("qrcode");
+      qrContainer.innerHTML = "";
+      if (text.trim() !== "") {
+        qrcode = new QRCode(qrContainer, {
+          text: text,
+          width: 200,
+          height: 200,
+          colorDark: "#000",
+          colorLight: "#fff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+    }
+  </script>
+</body>
+</html>
